@@ -70,14 +70,9 @@
             background-color: #f6f7fb;
             color: #666;
         }
-        .btn-group {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 22px;
-        }
-        button, .btn-link { 
-            padding: 14px; 
+        button { 
+            margin-top: 20px;
+            padding: 15px; 
             width: 100%; 
             border: none; 
             border-radius: 10px; 
@@ -85,21 +80,13 @@
             font-size: 17px; 
             font-weight: bold; 
             text-align: center;
-            text-decoration: none;
-            display: block;
-            box-sizing: border-box;
-        }
-        button:active, .btn-link:active { 
-            opacity: 0.85;
-            transform: scale(0.99);
-        }
-        .btn-copy {
             background: #7360f2; 
             color: white; 
+            transition: opacity 0.2s, transform 0.1s;
         }
-        .btn-viber {
-            background: #734994;
-            color: white;
+        button:active { 
+            opacity: 0.85;
+            transform: scale(0.99);
         }
         .success { 
             color: #155724; 
@@ -144,10 +131,7 @@
             <input type="number" id="family" min="0" value="0" inputmode="numeric">
         </div>
 
-        <div class="btn-group">
-            <button id="copyBtn" class="btn-copy">Скопіювати текст</button>
-            <a href="viber://" class="btn-link btn-viber">Перейти у Viber</a>
-        </div>
+        <button id="copyBtn">Скопіювати текст</button>
 
         <div id="status" class="success">✓ Текст скопійовано!</div>
     </div>
@@ -187,7 +171,7 @@
 
         autoCalculate();
 
-        // Копіювання, що надійно працює в iOS Safari та Android Chrome
+        // Універсальне копіювання для iOS та Android
         document.getElementById('copyBtn').addEventListener('click', async () => {
             const message = `Клас- ${elClass.value}\nКількість учнів- ${elTotal.value || 0}\nОчно- ${elOffline.value || 0}\nПрисутні- ${elPresent.value || 0}\nВідсутні- ${elAbsent.value || 0}\nСімейн.(за межами)- ${elFamily.value || 0}`;
 
